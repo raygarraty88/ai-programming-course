@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/ai-programming-course/static/css/main.1f44b64a.css",
-    "main.js": "/ai-programming-course/static/js/main.e1380b4a.js",
+    "main.js": "/ai-programming-course/static/js/main.ae330922.js",
     "static/js/453.e3156ed4.chunk.js": "/ai-programming-course/static/js/453.e3156ed4.chunk.js",
     "index.html": "/ai-programming-course/index.html",
     "main.1f44b64a.css.map": "/ai-programming-course/static/css/main.1f44b64a.css.map",
-    "main.e1380b4a.js.map": "/ai-programming-course/static/js/main.e1380b4a.js.map",
+    "main.ae330922.js.map": "/ai-programming-course/static/js/main.ae330922.js.map",
     "453.e3156ed4.chunk.js.map": "/ai-programming-course/static/js/453.e3156ed4.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.1f44b64a.css",
-    "static/js/main.e1380b4a.js"
+    "static/js/main.ae330922.js"
   ]
 }
