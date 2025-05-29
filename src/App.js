@@ -28,10 +28,10 @@ const handleSubmit = async (e) => {
   setStatus(null);
   setError(null); // reset previous error
 
-  if (!formData.consent) {
-    setError('✅ Please accept the Privacy Policy to proceed.');
-    return;
-  }
+//  if (!formData.consent) {
+//    setError('✅ Please accept the Privacy Policy to proceed.');
+ //   return;
+ // }
 
   try {
     const { consent, ...submissionData } = formData; // exclude from submission
