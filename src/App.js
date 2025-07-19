@@ -10,12 +10,13 @@ function App() {
     phone: '',
     preference: '',
     message: '',
-    consent: false,
+    consentGiven: false, // NEW
   });
+  const [modalVisible, setModalVisible] = useState(false); // NEW
   const [status, setStatus] = useState(null);
   const [error, setError] = useState(null);
 
-  const handleChange = (e) => {
+const handleChange = (e) => {
   const { name, value, type, checked } = e.target;
   setFormData((prev) => ({
     ...prev,
@@ -28,13 +29,13 @@ const handleSubmit = async (e) => {
   setStatus(null);
   setError(null); // reset previous error
 
-//  if (!formData.consent) {
-//    setError('✅ Please accept the Privacy Policy to proceed.');
- //   return;
- // }
+  if (!formData.consentGiven) {
+    alert("You must accept the privacy policy to proceed.");
+    return;
+  }
 
   try {
-    const { consent, ...submissionData } = formData; // exclude from submission
+    const { consentGiven, ...submissionData } = formData; // exclude from submission
     const response = await fetch('https://formspree.io/f/xdkgjqbd', {
       method: 'POST',
       headers: {
@@ -52,7 +53,7 @@ const handleSubmit = async (e) => {
         phone: '',
         preference: '',
         message: '',
-        consent: false,
+        consentGiven: false,
       });
     } else {
       setStatus('error');
@@ -172,8 +173,8 @@ const handleSubmit = async (e) => {
       <section className="course-schedule" id="schedule">
         <h2>🗓️ Course Schedule</h2>
         <p>
-          The course runs for approximately <strong>6 months</strong> with sessions held
-          <strong>twice per week</strong> in the evenings. Exact days and times will be
+          The course runs for approximately <strong>6 months</strong> with sessions held 
+          <strong> twice per week</strong> in the evenings. Exact days and times will be
           scheduled based on demand to accommodate both on-site and online participants.
         </p>
         <p>
@@ -247,7 +248,20 @@ const handleSubmit = async (e) => {
             value={formData.message}
             onChange={handleChange}
           ></textarea>
-          <PrivacyModal />
+          <div className="consent-container">
+          <input
+            type="checkbox"
+            name="consentGiven"
+            checked={formData.consentGiven}
+            onChange={handleChange}
+            required
+          />
+          <label onClick={() => setModalVisible(true)} style={{ cursor: 'pointer' }}>
+            Al enviar este formulario, aceptas nuestra <u>política de privacidad</u>.
+          </label>
+          </div>
+
+         {modalVisible && <PrivacyModal onClose={() => setModalVisible(false)} />}
 
           <button type="submit">Send Application</button>
         </form>

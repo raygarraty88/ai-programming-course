@@ -182,3 +182,11 @@ footer {
   margin-bottom: 0.5rem;
 }
 
+.consent-container {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+}
+
