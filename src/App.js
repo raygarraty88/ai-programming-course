@@ -248,18 +248,26 @@ const handleSubmit = async (e) => {
             value={formData.message}
             onChange={handleChange}
           ></textarea>
-          <div className="consent-container">
+          
+      <div className="consent-container">
+        <label className="consent-label">
           <input
             type="checkbox"
             name="consentGiven"
             checked={formData.consentGiven}
             onChange={handleChange}
-            required
-          />
-          <label onClick={() => setModalVisible(true)} style={{ cursor: 'pointer' }}>
-            Al enviar este formulario, aceptas nuestra <u>política de privacidad</u>.
-          </label>
-          </div>
+            onInvalid={e => e.target.setCustomValidity('Por favor, acepte nuestra política de privacidad')}
+           required
+         />
+         <span>
+           Al enviar este formulario, aceptas nuestra{' '}
+            <u onClick={() => setModalVisible(true)} style={{ cursor: 'pointer' }}>
+              política de privacidad
+           </u>.
+         </span>
+       </label>
+      </div>
+
 
          {modalVisible && <PrivacyModal onClose={() => setModalVisible(false)} />}
 
